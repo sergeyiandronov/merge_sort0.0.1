@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
-void merge(int *&tmp,int *leftpart,int *rightpart,int size,){
+void merge(int *&tmp,int *leftpart,int *rightpart,int size){
     int lp=0,rp=0,n=0;
 	while(n<size){
 		if(leftpart[lp]<=rightpart[rp]){
@@ -9,12 +9,14 @@ void merge(int *&tmp,int *leftpart,int *rightpart,int size,){
 			if(lp<size/2-1){
 			        lp++;
 			}
+			n++;
 		}
 		if(leftpart[lp]>rightpart[rp]){
 			tmp[n]=rightpart[rp];
 			if(rp<(size/2+size%2)-1){
 			        rp++;
 			}
+			n++;
 		}
 	}
 }
