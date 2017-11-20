@@ -1,6 +1,6 @@
 #include <iostream>
 #include <sstream>
-#include <string.h>
+
 using namespace std;
 void copy(int *&dist,int *scr,int size){
     	for(int i=0;i<size;i++){
