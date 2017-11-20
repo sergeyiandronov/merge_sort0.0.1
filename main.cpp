@@ -27,7 +27,8 @@ void merge_sort(int *&ar,int size){
  	int *tmp=new int[size];
  	merge_sort(ar,size/2);
  	merge_sort(ar+size/2,(size/2)+(size%2));
- 	merge(tmp,ar,ar+size/2);
+ 	merge(tmp,ar,ar+size/2,size);
+ 	memcpy(ar,tmp,size);
  	
  	
 }
@@ -61,7 +62,7 @@ int main() {
 
     
     
-   quicksort(arr,0,n-1,arr[0]);
+   merge_sort(arr,n);
    
 
     
