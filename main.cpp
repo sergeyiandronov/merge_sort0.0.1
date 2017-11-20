@@ -21,6 +21,14 @@ void merge(int *&tmp,int *leftpart,int *rightpart,int size){
 	}
 }
 void merge_sort(int *&ar,int size){
+ 	if(size==1){
+ 		return;
+ 	}
+ 	int *tmp=new int[size];
+ 	merge_sort(ar,size/2);
+ 	merge_sort(ar+size/2,(size/2)+(size%2));
+ 	merge(tmp,ar,ar+size/2);
+ 	
  	
 }
 int main() {
