@@ -1,22 +1,27 @@
 #include <iostream>
 #include <sstream>
+#include <string.h>
 using namespace std;
 void merge(int *&tmp,int *leftpart,int *rightpart,int size){
     int lp=0,rp=0,n=0;
 	while(n<size){
-		if(leftpart[lp]<=rightpart[rp]){
+	           frp=lp<size/2;
+	           flp=lp<size/2;
+		if(lp<size/2&&leftpart[lp]<=rightpart[rp]){
 			tmp[n]=leftpart[lp];
-			if(lp<size/2-1){
-			        lp++;
-			}
+			
+			lp++;
+			
 			n++;
+			continue;
 		}
-		if(leftpart[lp]>rightpart[rp]){
+		if(lp<size/2&&leftpart[lp]>rightpart[rp]){
 			tmp[n]=rightpart[rp];
 			if(rp<(size/2+size%2)-1){
 			        rp++;
 			}
 			n++;
+			continue;
 		}
 	}
 }
@@ -25,9 +30,13 @@ void merge_sort(int *&ar,int size){
  		return;
  	}
  	int *tmp=new int[size];
+ 	int *arh=ar+size/2;
  	merge_sort(ar,size/2);
- 	merge_sort(ar+size/2,(size/2)+(size%2));
- 	merge(tmp,ar,ar+size/2,size);
+ 	merge_sort(arh,(size/2)+(size%2));
+ 	merge(tmp,ar,arh,size);
+ 	for(int i=0;i<size;i++){
+ 	   cout<<tmp[i]<<" ";
+ 	}cout<<ar[0]<<" "<<size<<"\n";
  	memcpy(ar,tmp,size);
  	
  	
